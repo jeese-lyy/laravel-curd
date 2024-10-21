@@ -51,7 +51,7 @@ class <controller> extends Base
 
     public function edit(Request $request){
         $data = $request->all();
-        $res = (new <service>Service())->->_edit($data);
+        $res = (new <service>Service())->_edit($data);
         outPutSucc($res, "请求成功");
     }
 }
