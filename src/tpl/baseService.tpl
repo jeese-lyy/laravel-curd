@@ -74,4 +74,10 @@ abstract class BaseService
     }
 
 
+    public function edit($data){
+        if (empty($data)) return outPutError("参数不能为空");
+        if (empty($this->getOne($data['id']))) return outPutError("数据不存在");
+        return $this->getModel()->whereNull("delete_time")->where([["id","=",$data["id"]]])->update($data);
+    }
+
 }

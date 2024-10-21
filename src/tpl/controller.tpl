@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 // Route::get('<controller>Detail',[\App\Http\Controllers\<path>\<controller>::class,"detail"]);
 // Route::get('<controller>Insert',[\App\Http\Controllers\<path>\<controller>::class,"save"]);
 // Route::get('<controller>Del',[\App\Http\Controllers\<path>\<controller>::class,"del"]);
+// Route::get('<controller>Edit',[\App\Http\Controllers\<path>\<controller>::class,"edit"]);
 
 class <controller> extends Base
 {
@@ -47,4 +48,10 @@ class <controller> extends Base
     }
 
 
+
+    public function edit(Request $request){
+        $data = $request->all();
+        $res = (new <service>Service())->->_edit($data);
+        outPutSucc($res, "请求成功");
+    }
 }

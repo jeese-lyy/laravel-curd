@@ -37,4 +37,9 @@ class <serviceName>Service extends BaseService
         if (empty($data)) outPutError("参数不能为空");
         return $this->save($data);
     }
+
+    public function _edit($data){
+        if (empty($data)) outPutError("参数不能为空");
+        return $this->edit($data);
+    }
 }
