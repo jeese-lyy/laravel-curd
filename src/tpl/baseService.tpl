@@ -12,15 +12,17 @@ abstract class BaseService
     }
 
 
-    public function getList($where = [], $pageInfo = [], $isall = false, $with = [], $relation = "", $hasWhere = [])
+    public function getList($where = [], $pageInfo = [], $isall = false, $with = [], $relation = "", $hasWhere = [],$order='',$orderSort='desc')
     {
         $query = $this->getModel()->whereNull("delete_time");
         if ($where) $query = $query->where($where);
         if ($with) $query = $query->with($with);
         if ($hasWhere && $relation) $query = $query->whereHas($relation, $hasWhere);
+        if ($order) $query = $query->orderBy($order,$orderSort);
         if (!$isall) $query = $query->skip($pageInfo['begin'])->take($pageInfo["limit"]);
         return $query->get()->toArray();
     }
+
 
     public function getPageInfo()
     {
